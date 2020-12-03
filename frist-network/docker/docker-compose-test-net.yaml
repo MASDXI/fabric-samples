@@ -5,11 +5,6 @@
 
 version: '2'
 
-volumes:
-  orderer.network.com:
-  peer0.org1.network.com:
-  peer0.org2.network.com:
-
 networks:
   test:
 
@@ -42,7 +37,6 @@ services:
         - ../configtx/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
         - ../crypto-config/ordererOrganizations/network.com/orderers/orderer.network.com/msp:/var/hyperledger/orderer/msp
         - ../crypto-config/ordererOrganizations/network.com/orderers/orderer.network.com/tls/:/var/hyperledger/orderer/tls
-        - orderer.network.com:/var/hyperledger/production/orderer
     ports:
       - 7050:7050
     networks:
