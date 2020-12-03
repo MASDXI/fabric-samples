@@ -18,3 +18,6 @@ vendor/
 node_modules/
 # Ignore Gradle build output directory
 build
+
+/frist-network/configtx
+/frist-network/crypto-config

@@ -1,0 +1,30 @@
+OrdererOrgs:
+
+  - Name: Orderer
+    Domain: network.com
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - 172.31.119.209
+
+PeerOrgs:
+
+  - Name: Org
+    Domain: org1.network.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - 172.31.119.209
+    Users:
+      Count: 1
+
+  - Name: Org
+    Domain: org2.network.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - 172.31.119.209
+    Users:
+      Count: 1
