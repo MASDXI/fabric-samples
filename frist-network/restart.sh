@@ -1,4 +1,4 @@
-./stop
+./stop.sh
 
 ./build.sh
 

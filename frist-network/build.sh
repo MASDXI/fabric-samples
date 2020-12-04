@@ -13,7 +13,7 @@ rm -rf crypto-config
 ../bin/configtxgen -printOrg Org2MSP > ./configtx/Org2MSP.json
 
 #====================== Block Config ===================================//
-../bin/configtxgen -profile TwoOrgsOrdererGenesis -outputBlock ./configtx/genesis.block -channelID mychannel
+../bin/configtxgen -profile TwoOrgsOrdererGenesis -outputBlock ./configtx/genesis.block -channelID orderer-system-channel
 
 #====================== Channel Config ===================================//
 ../bin/configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./configtx/mychannel.tx -channelID mychannel
