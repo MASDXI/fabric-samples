@@ -1,31 +1,48 @@
 # env
-export PEER0_ORG1=peer0.org1.network.com
-export PEER0_ORG2=peer0.org2.network.com
-# export =
-# more...
-
-# chaincode env
-export CC_VERSION=1.0
+export CC_VERSION=1
 export CC_NAME=fabcar
-# export =
+export CC_RUNTIME_LANGUAGE=golang
+export CC_SRC_PATH=../fabcar/go
+# export FOO=BAR
 # more...
-
-echo "============ Deploy Chaincode ============"
-
-# do something ...
 
 echo "====== Package Chaincode ======"
 
+export FABRIC_CFG_PATH=../config
+
+presetup() {
+    echo Vendoring Go dependencies ...
+    pushd $CC_SRC_PATH
+    GO111MODULE=on go mod vendor
+    popd
+    echo Finished vendoring Go dependencies
+}
+
+# preset up chaincode 
+presetup
+
+echo "clean ${CC_NAME} binaries"
+sleep 2
+rm -rf $CC_NAME.tar.gz
+
+echo "generate ${CC_NAME} binaries"
+    
+../bin/peer lifecycle chaincode package ${CC_NAME}.tar.gz \
+    --path ${CC_SRC_PATH} \
+    --lang ${CC_RUNTIME_LANGUAGE} \
+    --label ${CC_NAME}_${CC_VERSION}
+
 # do something ...
 
-echo "====== Install Chaincode ======"
-
-# do something ...
-
-echo "====== query Installed Chaincode ======"
+echo "====== install Chaincode ======"
 
 # do something ...
 
 echo "====== approve Chaincode ======"
 
 # do something ...
+
+# TODO-List
+# queryInstalled
+# approveForMyOrg1
+# checkCommitReadyness
