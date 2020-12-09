@@ -28,10 +28,10 @@ rm -rf $CC_NAME.tar.gz
 echo "generate ${CC_NAME} binaries"
 
 # no sure right now using docker or export env 
-# ../bin/peer lifecycle chaincode package ${CC_NAME}.tar.gz \
-#     --path ${CC_SRC_PATH} \
-#     --lang ${CC_RUNTIME_LANGUAGE} \
-#     --label ${CC_NAME}_${CC_VERSION}
+../bin/peer lifecycle chaincode package ${CC_NAME}.tar.gz \
+    --path ${CC_SRC_PATH} \
+    --lang ${CC_RUNTIME_LANGUAGE} \
+    --label ${CC_NAME}_${CC_VERSION}
 
 # do something ...
 
